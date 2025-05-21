@@ -24,11 +24,13 @@ describe("GET /api/v1/users/[username]", () => {
 
       expect(response1.status).toBe(201);
 
-      const response2 = await fetch("http://localhost:3000/api/v1/users/MesmoCase");
+      const response2 = await fetch(
+        "http://localhost:3000/api/v1/users/MesmoCase",
+      );
 
       expect(response2.status).toBe(200);
 
-      const response2Body = await response2.json()
+      const response2Body = await response2.json();
 
       expect(response2Body).toEqual({
         id: response2Body.id,
@@ -59,11 +61,13 @@ describe("GET /api/v1/users/[username]", () => {
 
       expect(response1.status).toBe(201);
 
-      const response2 = await fetch("http://localhost:3000/api/v1/users/casediferente");
+      const response2 = await fetch(
+        "http://localhost:3000/api/v1/users/casediferente",
+      );
 
       expect(response2.status).toBe(200);
 
-      const response2Body = await response2.json()
+      const response2Body = await response2.json();
 
       expect(response2Body).toEqual({
         id: response2Body.id,
@@ -80,17 +84,19 @@ describe("GET /api/v1/users/[username]", () => {
     });
 
     test("With nonexistent username'", async () => {
-      const response = await fetch("http://localhost:3000/api/v1/users/usuarioinexistente");
+      const response = await fetch(
+        "http://localhost:3000/api/v1/users/usuarioinexistente",
+      );
 
       expect(response.status).toBe(404);
 
-      const responseBody = await response.json()
+      const responseBody = await response.json();
 
       expect(responseBody).toEqual({
-        name: 'NotFoundError',
+        name: "NotFoundError",
         message: "O username informado não foi encontrado no sistema.",
         action: "Verifique se o username está digitado corretamente.",
-        status_code: 404
+        status_code: 404,
       });
     });
   });
